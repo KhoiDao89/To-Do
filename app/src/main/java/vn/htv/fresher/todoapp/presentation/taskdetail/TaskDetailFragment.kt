@@ -39,10 +39,10 @@ class TaskDetailFragment : BaseFragment<FragmentTaskDetailBinding>() {
           title             = R.string.next_step,
           hint              = R.string.new_subtask_hint,
           positiveName      = R.string.next_step,
-          positiveCallback  = { subTaskName ->
+          saveCallback      = { subTaskName ->
             val taskId = viewModel.task.value?.id ?: return@showInputDialog
 
-            viewModel.saveNewSubTask(taskId, subTaskName)
+            viewModel.addSubTask(taskId, subTaskName)
           }
         )
       },

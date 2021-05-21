@@ -46,7 +46,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>() {
         title             = R.string.new_name_category,
         text              = viewModel.itemCategory.value?.name,
         positiveName      = R.string.button_save,
-        positiveCallback  = { categoryName ->
+        saveCallback      = { categoryName ->
           viewModel.updateCategory(categoryName)
         }
       )
@@ -80,7 +80,6 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>() {
 
     viewModel.deleteCategoryCompleted.observe(this, {
       safeActivity.onBackPressed()
-      viewModel.loadCategory()
     })
 
     viewModel.itemList.observe(this, {
@@ -108,7 +107,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>() {
         title             = R.string.new_task,
         hint              = R.string.new_task_hint,
         positiveName      = R.string.button_create_task,
-        positiveCallback  = { viewModel.addNewTask(it) }
+        saveCallback      = { viewModel.addTask(it) }
       )
     }
   }

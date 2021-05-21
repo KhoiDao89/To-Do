@@ -31,7 +31,7 @@ class CategoryActivity : BaseActivity() {
     when {
       viewModel.taskGroup != null -> {
         val taskAttributeId = viewModel.taskGroup?.groupName ?: return
-        setToolbarTitle(getString(taskAttributeId))
+        setToolbarTitleRes(taskAttributeId)
       }
       else -> viewModel.categoryId = intent.getLongExtra(PARAM_EXTRA_CATEGORY_ID, 0)
     }
@@ -52,7 +52,7 @@ class CategoryActivity : BaseActivity() {
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
-      R.id.changeCategoryNameMenu -> updateCategoryCallback?.invoke()
+      R.id.updateCategoryNameMenu -> updateCategoryCallback?.invoke()
       R.id.deleteCategoryMenu     -> deleteCategoryCallback?.invoke()
     }
 
